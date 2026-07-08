@@ -1,0 +1,31 @@
+[project]
+name = "a3"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.10, <3.13"
+dependencies = [
+    "numpy",
+    "torch",
+    "pandas",
+    "evaluate",
+    "jiwer",
+    "chardet",
+    "tokenizers",
+    "tqdm",
+    "pytest",
+    "hypothesis",
+    "wandb",
+    "matplotlib",
+    "plotly",
+    "seaborn",
+    "setuptools",
+]
+
+[tool.pytest.ini_options]
+markers = [
+    "ngram_1",
+    "ngram_2",
+    "transformer_1",
+    "transformer_2",
+    "transformer_3",
+]
