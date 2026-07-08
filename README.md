@@ -1,14 +1,18 @@
 # Natural Language Processing Projects
 
-A portfolio of four end-to-end NLP systems implemented in Python and PyTorch: text classification, word embeddings, language modeling, and natural-language-to-SQL generation. Each project includes training/evaluation code, unit tests, reported results, and a project-level README with full setup and experiment details.
+Four end-to-end NLP systems implemented in Python and PyTorch: text classification, word embeddings, language modeling, and natural-language-to-SQL generation. Each project includes training/evaluation code, unit tests, reported results, and a project-level README with full setup and experiment details.
 
-These were built as graduate coursework at Cornell Tech (CS 5744) and are intended to demonstrate practical ML engineering for NLP: implementing models from scratch, comparing baselines carefully, and measuring systems with task-appropriate metrics.
+These were built as graduate coursework at Cornell University and are intended to demonstrate practical ML engineering for Natural Langauge Processing: implementing models from scratch, comparing baselines, and measuring systems with task-appropriate metrics.
 
-## Projects at a glance
+## Tech stack
+
+Python · PyTorch · NumPy · Pandas · Hugging Face Transformers · NLTK · pytest · uv
+
+## Projects summary
 
 | Project | What it covers | Key techniques | Highlight |
 | --- | --- | --- | --- |
-| [Perceptrons and MLPs](./Perceptrons%20and%20MLPs/) | Text classification (SST-2, 20 Newsgroups) | Feature-based perceptron; token-embedding MLP | MLP ≈75–67% test accuracy; feature ablations and MPS batching study |
+| [Perceptrons and MLPs](./Perceptrons%20and%20MLPs/) | Text classification (SST-2, 20 Newsgroups) | Feature-based perceptron; token-embedding MLP | **MLP ≈75–67% test accuracy**; feature ablations and MPS batching study |
 | [Word2Vec](./Word2Vec/) | Word embeddings + similarity | Skip-gram, negative sampling, subword vocab, WordNet retrofit | **0.395** Spearman on hidden test (2nd on course leaderboard) |
 | [N-gram and Transformer](./N-gram%20and%20Transformer/) | Language modeling + ASR reranking | N-gram LMs; character-level Transformer; HUB WER | TF-Large: **3.34** test PPL, **6.46%** best HUB dev WER |
 | [Natural Language to SQL Translator](./Natural%20Language%20to%20SQL%20Translator/) | NL → executable SQL (flights DB) | Fine-tuned / from-scratch T5; Gemma ICL | Fine-tuned T5: **0.65** Record F1 on test |
@@ -49,18 +53,6 @@ Maps natural-language questions about flights to **executable SQLite** over a fl
 
 ---
 
-## Repository structure
-
-```text
-Natural-Language-Processing-Projects/
-├── Perceptrons and MLPs/              # Text classification
-├── Word2Vec/                          # Word embeddings
-├── N-gram and Transformer/            # LMs + ASR reranking
-└── Natural Language to SQL Translator/  # NL → SQL (T5 + ICL)
-```
-
-Each folder is self-contained: its own `pyproject.toml`, `uv.lock`, `data/`, `tests/`, and `results/`.
-
 ## Getting started
 
 ### Prerequisites
@@ -88,45 +80,7 @@ Run unit tests from that same folder:
 uv run pytest
 ```
 
-### Quick start by project
 
-**Classification** (`Perceptrons and MLPs`):
+Training-heavy projects (especially Word2Vec, Transformers, and T5) benefit from a Cloud GPU or Apple Silicon with MPS. Full CLI flags, data notes, and evaluation commands are in each project’s README.
 
-```sh
-cd "Perceptrons and MLPs" && uv sync
-uv run python perceptron.py -d sst2 -f bow
-uv run python multilayer_perceptron.py -d newsgroups
-```
 
-**Embeddings** (`Word2Vec`):
-
-```sh
-cd Word2Vec && uv sync
-uv run python word2vec.py
-```
-
-**Language models** (`N-gram and Transformer`):
-
-```sh
-cd "N-gram and Transformer" && uv sync
-uv run n_gram.py --tokenization_level character --n=5 --laplace_k=0.0001 --experiment_name=char5
-uv run transformer.py --num_layers=4 --hidden_dim=256 --experiment_name=transformer
-```
-
-**NL → SQL** (`Natural Language to SQL Translator`):
-
-```sh
-cd "Natural Language to SQL Translator" && uv sync
-uv run train_t5.py --finetune --experiment_name ft --batch_size 1 --max_n_epochs 5 --patience_epochs 2 --amp --canonicalize_sql_targets
-uv run prompting.py --shot 3 --selection tfidf --eval_split both --experiment_name icl_k3
-```
-
-Training-heavy projects (especially Word2Vec, Transformers, and T5) benefit from a GPU or Apple Silicon with MPS. Full CLI flags, data notes, and evaluation commands are in each project’s README.
-
-## Tech stack
-
-Python · PyTorch · NumPy · Pandas · Hugging Face Transformers · NLTK · pytest · uv
-
-## License / use
-
-Course-derived portfolio code for demonstration of NLP engineering skills. See individual project folders for data and reproduction details.
