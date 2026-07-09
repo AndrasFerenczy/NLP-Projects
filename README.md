@@ -2,7 +2,7 @@
 
 Four end-to-end NLP systems implemented in Python and PyTorch: text classification, word embeddings, language modeling, and natural-language-to-SQL generation. Each project includes training/evaluation code, unit tests, reported results, and a project-level README with full setup and experiment details.
 
-These were built as graduate coursework at Cornell University and are intended to demonstrate practical ML engineering for Natural Langauge Processing: implementing models from scratch, comparing baselines, and measuring systems with task-appropriate metrics.
+These were built as graduate coursework for the Natural Language Processing course at Cornell University and are intended to demonstrate practical ML engineering for Natural Langauge Processing: implementing models from scratch, comparing baselines, and measuring systems with task-appropriate metrics.
 
 ## Tech stack
 
